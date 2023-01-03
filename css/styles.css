@@ -1,0 +1,104 @@
+*{
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container{
+
+    width: 100vw;
+    height: 100vh;
+    background-color: #adadadd2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.calculator{
+    width: 30vw;
+    height: 70%;
+
+    border-radius: 5px;
+    padding: 5px 5px; 
+
+    background-color: #ffffffda;
+}
+
+h3{
+
+    font-size: 1em;
+    margin: 2px 3px;
+    color: #8d8b8b;
+    
+}
+
+.numbers-operations{
+    text-align: right;
+    margin: 8px 2px;
+    overflow-wrap: break-word; /*faz com que o conteudo não ultrapasse seu elemento pai*/
+}
+
+#previous-numbers{
+
+    color: #9f9999;
+
+}
+
+#currents-numbers{
+
+    color: #000000;
+
+    font-size: 2em;
+    font-weight: 600;
+
+}
+
+.operation-signal{
+    margin: 2px;
+}
+
+.buttons-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 3px;
+
+    height: 80%;
+}
+
+#equals-btn{
+    grid-column: span 2;
+    background-color: #89b8ff;
+}
+
+#equals-btn:hover{
+
+    background-color: #67a4ff;
+
+}
+
+button{
+
+    border: none;
+    border-radius: 3px;
+    box-shadow: 1px 1px 5px #9f9999;
+    font-size: 1.5em;
+
+}
+
+button:hover{
+
+    background-color: #8d8b8b99;
+    cursor: pointer;
+    transition: .3s;
+
+}
+
+.numbers-btn{
+
+    background-color: white;
+
+}
