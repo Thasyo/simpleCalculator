@@ -40,6 +40,7 @@ h3{
     text-align: right;
     margin: 8px 2px;
     overflow-wrap: break-word; /*faz com que o conteudo não ultrapasse seu elemento pai*/
+    min-height: 1.15em;
 }
 
 #previous-numbers{
