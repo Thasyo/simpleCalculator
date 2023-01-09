@@ -27,6 +27,16 @@ class Calculator {
     //processando todas as operações da calculadora.
     processOperation(operation){
 
+        //Verficando se o valor atual for vazio.
+        if(this.currentsNumberText.innerText === "" && operation !== "C"){
+            
+            if(this.previousNumberText.innerText !== ""){
+                //mudando a operação atual caso o valor atual for vazio.
+                this.changeOperation(operation);
+            }
+            return;
+        }
+
         //Pegando o valor atual e anterior.
         let operationValue;
         const previous = +this.previousNumberText.innerText.split(" ")[0];
@@ -35,7 +45,31 @@ class Calculator {
         switch(operation){
             case "+":
                 operationValue = previous + current;
+                this.updateScreen(operationValue, operation, current, previous);
+                break;
+            case "-":
+                operationValue = previous - current;
                 this.updateScreen(operationValue, operation, current, previous)
+                break;
+            case "*":
+                operationValue = previous * current;
+                this.updateScreen(operationValue, operation, current, previous)
+                break;
+            case "/":
+                operationValue = previous / current;
+                this.updateScreen(operationValue, operation, current, previous)
+                break;
+            case "DEL":
+                this.processDelOperator();
+                break;    
+            case "CE":
+                this.processCeOperator();
+                break;
+            case "C":
+                this.processCOperator();
+                break;
+            case "=":
+                this.processEqualOperator();
                 break;
             default:
                 return;
@@ -60,17 +94,47 @@ class Calculator {
             this.previousNumberText.innerText = `${operationValue} ${operation}`
             this.currentsNumberText.innerText = "";
 
-
         }
-
-
-    
-    
+   
     }
 
+    //mudando operações matemáticas.
+    changeOperation(operation){
+        
+        const mathOperations = ["+", "-", "/", "*"];
+
+        if(!mathOperations.includes(operation)){
+            return;
+        }
+
+        this.previousNumberText.innerText = this.previousNumberText.innerText.slice(0, -1) + operation;
+    }
+
+    //método para deletar o último dígito.
+    processDelOperator(){
+        this.currentsNumberText.innerText = this.currentsNumberText.innerText.slice(0, -1);
+    }
+
+    //método para deletar todos os digitos do valor atual.
+    processCeOperator(){
+        this.currentsNumberText.innerText = "";
+    }
+
+    //método para limpar completamente todo o screen da calculadora.
+    processCOperator(){
+        this.currentsNumberText.innerText = "";
+        this.previousNumberText.innerText = "";
+    }
+
+    //método para o button 'equal'.
+    processEqualOperator(){
+        const operation = this.previousNumberText.innerText.split(" ")[1];
+        this.processOperation(operation);
+    }
 
 };
 
+//fazendo a "chamada" da nova classe.
 const calc = new Calculator (previousNumberText, currentsNumberText); 
 
 //adicionando os eventos de click para cada botão
